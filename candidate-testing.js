@@ -9,7 +9,7 @@ let candidateName = "";
 // TODO 1.2a: Define question, correctAnswer, and candidateAnswer 
 //Define questions and correctAnswers variables as arrays. Use the table below to fill these arrays.
 let question = "Who was the first American woman in space? ";
-let correctAnswer = "Sally Ride";
+let correctAnswer = 'Sally Ride';
 let candidateAnswer = "";
 
 
@@ -40,17 +40,31 @@ function gradeQuiz(candidateAnswers) {
 
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly 
   // Replace the basic feedback from TODO 1.2c with a template literal that displays each of the candidate’s responses in addition to the corresponding correct answers
-for (i = 0; i < correctAnswers.length; i++) {
-  if (candidateAnswers[i] === correctAnswers[i]){
+  let numcorrect = 0;
+  for (i = 0; i < questions.length; i++) {
+  candidateAnswer = (candidateAnswers[i]);
+  //candidateAnswerCase = candidateAnswer.toLowerCase;
+  correctAnswer = (correctAnswers[i]);
+  //correctAnswerCase = correctAnswer.toLowerCase;
+  
+  if (correctAnswer === candidateAnswer) {
     console.log(`Question ${i+1}: Your answer was ${candidateAnswers[i]} and correct answer was ${correctAnswers[i]}; You answered correctly!`)
+    numcorrect += 1;
   }
     else {
       console.log(`Question ${i+1}: Your answer was ${candidateAnswers[i]} and correct answer was ${correctAnswers[i]}; Your answer was incorrect`)
     }
-}
- 
-  let grade;  //TODO 3.2 use this variable to calculate the candidates score.
+    
+  }
 
+  let grade = (numcorrect / questions.length) * 100  //TODO 3.2 use this variable to calculate the candidates score.
+
+  if (numcorrect >= 4){
+    console.log(`Congrats you passed! You scored an ${grade}% on the quiz.`);
+  }
+  else {
+    console.log(`Sorry you failed the quiz! You scored an ${grade}% on the quiz but the minimum grade to pass is 80%.`);
+  }
 
   return grade;
 }
