@@ -29,11 +29,8 @@ function askQuestion() {
   // TODO 1.2b: Ask candidate the question and assign the response as candidateAnswer 
   // Replace your code from TODO 1.2b with a loop that programmatically asks each question in the array and stores the user’s responses.
   for(i = 0; i < questions.length; i++) {
-    //question = (questions[i]);
-    candidateAnswer = input.question(questions[i]);
-    candidateAnswers.push(candidateAnswer);
-  }
-    
+    candidateAnswers[i] = input.question(questions[i]);
+  } 
 }
 
 function gradeQuiz(candidateAnswers) {
@@ -41,31 +38,26 @@ function gradeQuiz(candidateAnswers) {
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly 
   // Replace the basic feedback from TODO 1.2c with a template literal that displays each of the candidate’s responses in addition to the corresponding correct answers
   let numcorrect = 0;
+  let checkCorrectAnswers = correctAnswers.join(',').toLowerCase().split(',');
+  let checkCandidateAnswers = candidateAnswers.join(',').toLowerCase().split(',');
   for (i = 0; i < questions.length; i++) {
-  candidateAnswer = (candidateAnswers[i]);
-  //candidateAnswerCase = candidateAnswer.toLowerCase;
-  correctAnswer = (correctAnswers[i]);
-  //correctAnswerCase = correctAnswer.toLowerCase;
-  
-  if (correctAnswer === candidateAnswer) {
-    console.log(`Question ${i+1}: Your answer was ${candidateAnswers[i]} and correct answer was ${correctAnswers[i]}; You answered correctly!`)
-    numcorrect += 1;
-  }
-    else {
-      console.log(`Question ${i+1}: Your answer was ${candidateAnswers[i]} and correct answer was ${correctAnswers[i]}; Your answer was incorrect`)
-    }
-    
+      if (checkCandidateAnswers[i] === checkCorrectAnswers[i]) {
+        console.log(`Question ${i+1}: Your answer was ${candidateAnswers[i]} and correct answer was ${correctAnswers[i]}; You answered correctly!`)
+        numcorrect += 1;
+      }
+        else {
+          console.log(`Question ${i+1}: Your answer was ${candidateAnswers[i]} and correct answer was ${correctAnswers[i]}; Your answer was incorrect`)
+        }
   }
 
   let grade = (numcorrect / questions.length) * 100  //TODO 3.2 use this variable to calculate the candidates score.
 
   if (numcorrect >= 4){
-    console.log(`Congrats you passed! You scored an ${grade}% on the quiz.`);
+      console.log(`Congrats you passed! You scored an ${grade}% on the quiz.`);
   }
-  else {
+    else {
     console.log(`Sorry you failed the quiz! You scored an ${grade}% on the quiz but the minimum grade to pass is 80%.`);
   }
-
   return grade;
 }
 
