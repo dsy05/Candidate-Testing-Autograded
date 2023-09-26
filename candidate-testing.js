@@ -42,21 +42,24 @@ function gradeQuiz(candidateAnswers) {
   let checkCandidateAnswers = candidateAnswers.join(',').toLowerCase().split(',');
   for (i = 0; i < questions.length; i++) {
       if (checkCandidateAnswers[i] === checkCorrectAnswers[i]) {
-        console.log(`Question ${i+1}: Your answer was ${candidateAnswers[i]} and correct answer was ${correctAnswers[i]}; You answered correctly!`)
+        console.log(`\n Question ${i+1}) ${questions[i]} \n Your answer: ${candidateAnswers[i]} \n correct answer: ${correctAnswers[i]} \n You answered correctly!`)
         numcorrect += 1;
       }
         else {
-          console.log(`Question ${i+1}: Your answer was ${candidateAnswers[i]} and correct answer was ${correctAnswers[i]}; Your answer was incorrect`)
+          console.log(`\n Question ${i+1}) ${questions[i]} \n Your answer: ${candidateAnswers[i]} \n correct answer: ${correctAnswers[i]} \n Your answer was incorrect!`)
         }
   }
 
   let grade = (numcorrect / questions.length) * 100  //TODO 3.2 use this variable to calculate the candidates score.
 
   if (numcorrect >= 4){
-      console.log(`Congrats you passed! You scored an ${grade}% on the quiz.`);
+      console.log(`>>> Overall Grade: ${grade}% (${numcorrect} of ${questions.length} responses correct)`);
+      console.log(`>>> Status: Passed <<<`);
   }
     else {
-    console.log(`Sorry you failed the quiz! You scored an ${grade}% on the quiz but the minimum grade to pass is 80%.`);
+      console.log(`>>> Overall Grade: ${grade}% (${numcorrect} of ${questions.length} responses correct)`);
+      console.log(`>>> Status: Failed <<<`);
+      console.log(`Minimum grade to pass is 80%.`);
   }
   return grade;
 }
