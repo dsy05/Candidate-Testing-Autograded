@@ -53,11 +53,11 @@ function gradeQuiz(candidateAnswers) {
   let grade = (numcorrect / questions.length) * 100  //TODO 3.2 use this variable to calculate the candidates score.
 
   if (numcorrect >= 4){
-      console.log(`>>> Overall Grade: ${grade}% (${numcorrect} of ${questions.length} responses correct)`);
+      console.log(`\n>>> Overall Grade: ${grade}% (${numcorrect} of ${questions.length} responses correct)`);
       console.log(`>>> Status: Passed <<<`);
   }
     else {
-      console.log(`>>> Overall Grade: ${grade}% (${numcorrect} of ${questions.length} responses correct)`);
+      console.log(`\n>>> Overall Grade: ${grade}% (${numcorrect} of ${questions.length} responses correct)`);
       console.log(`>>> Status: Failed <<<`);
       console.log(`Minimum grade to pass is 80%.`);
   }
